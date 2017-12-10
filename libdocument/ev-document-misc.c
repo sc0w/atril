@@ -401,13 +401,9 @@ ev_document_misc_get_screen_dpi (GdkScreen *screen, gint monitor)
 #endif
 {
 	gdouble dp, di;
-	gint sc_width, sc_height;
-
-	gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
-				 &sc_width, &sc_height);
 
 	/*diagonal in pixels*/
-	dp = hypot (sc_width, sc_height);
+	dp = hypot (gdk_screen_get_width (screen), gdk_screen_get_height (screen));
 
 	/*diagonal in inches*/
 #if GTK_CHECK_VERSION (3, 22, 0)
