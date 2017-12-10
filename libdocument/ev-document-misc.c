@@ -24,6 +24,7 @@
 #include <math.h>
 
 #include <gtk/gtk.h>
+#include <gdk/gdkx.h>
 
 #include "ev-document-misc.h"
 
@@ -403,7 +404,7 @@ ev_document_misc_get_screen_dpi (GdkScreen *screen, gint monitor)
 	gdouble dp, di;
 
 	/*diagonal in pixels*/
-	dp = hypot (gdk_screen_get_width (screen), gdk_screen_get_height (screen));
+	dp = hypot (WidthOfScreen (gdk_x11_screen_get_xscreen (screen)), HeightOfScreen (gdk_x11_screen_get_xscreen (screen)));
 
 	/*diagonal in inches*/
 #if GTK_CHECK_VERSION (3, 22, 0)

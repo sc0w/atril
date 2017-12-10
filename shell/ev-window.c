@@ -40,6 +40,7 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
+#include <gdk/gdkx.h>
 
 #include "egg-editable-toolbar.h"
 #include "egg-toolbar-editor.h"
@@ -1346,8 +1347,8 @@ setup_document_from_metadata (EvWindow *window)
 
 		screen = gtk_window_get_screen (GTK_WINDOW (window));
 		if (screen) {
-			request_width = MIN (request_width, gdk_screen_get_width (screen));
-			request_height = MIN (request_height, gdk_screen_get_height (screen));
+			request_width = MIN (request_width, WidthOfScreen (gdk_x11_screen_get_xscreen (screen)));
+			request_height = MIN (request_height, HeightOfScreen (gdk_x11_screen_get_xscreen (screen)));
 		}
 
 		if (request_width > 0 && request_height > 0) {
